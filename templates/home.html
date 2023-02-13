@@ -1,58 +1,148 @@
-
-
 {% extends 'base.html' %}
 {% load static %}
 
 {% block content %}
 
-
-
-<!-- ========================= SECTION MAIN ========================= -->
-<section class="section-intro padding-y-sm">
-<div class="container">
-
-<div class="intro-banner-wrap">
-	<img src="{% static 'images/banners/1.jpg' %}" class="img-fluid rounded">
+<div class="main">
+	<img class="img1"
+		src="{% static 'images/kisspng-mandala-buddhism-ornament-pattern-blue-mandala-pattern-5a6b87e4dd3db4.7968834815169965809062.png' %}"
+		alt="">
+	<img class="img2"
+		src="{% static 'images/kisspng-mandala-buddhism-ornament-pattern-blue-mandala-pattern-5a6b87e4dd3db4.7968834815169965809062.png' %}"
+		alt="">
+	<div id="carouselExampleCaptions" class="carousel slide img_div" data-bs-ride="carousel">
+		<div class="carousel-indicators">
+			<button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+				aria-current="true" aria-label="Slide 1"></button>
+			<button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+				aria-label="Slide 2"></button>
+			<button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+				aria-label="Slide 3"></button>
+		</div>
+		<div class="carousel-inner">
+			<div class="carousel-item active">
+				<img class="main_img" src="{% static 'images/Banner.png' %}" class="d-block w-100" alt="...">
+			</div>
+			<div class="carousel-item">
+				<img class="main_img" src="{% static 'images/banner 3.png' %}" class="d-block w-100" alt="...">
+			</div>
+			<div class="carousel-item">
+				<img class="main_img" src="{% static 'images/Banner 2.png' %}" class="d-block w-100" alt="...">
+			</div>
+		</div>
+	</div>
+	<div class="main_text">Explore the world of Indain Handicrafts</div>
 </div>
 
-</div> <!-- container //  -->
-</section>
-<!-- ========================= SECTION MAIN END// ========================= -->
-
-<!-- ========================= SECTION  ========================= -->
-<section class="section-name padding-y-sm">
-<div class="container">
-
-<header class="section-heading">
-	<a href="{% url 'store' %}" class="btn btn-outline-primary float-right">See all</a>
-	<h3 class="section-title">Popular products</h3>
-</header><!-- sect-heading -->
-
-
-<div class="row">
-	{% for product in products %}
-	<div class="col-md-3">
-		<div class="card card-product-grid">
-			<a href="{{ product.get_url }}" class="img-wrap"> <img src="{{ product.images.url }}"> </a>
-			<figcaption class="info-wrap">
-				<a href="{{ product.get_url }}" class="title">{{ product.product_name }}</a>
-				<div class="price mt-1">$ {{ product.price }}</div> <!-- price-wrap.// -->
-			</figcaption>
+<!---------------- Handcrafted masterpiece ------------->
+<div class="table">
+	<span class="sub_table">
+		<span>200+ Artist</span>
+		<span>World Wide Shipping</span>
+		<span>24/7 Customer support</span>
+	</span>
+	<hr class="hr1">
+</div>
+<div class="main_grid">
+	<div class="left_grid">
+		<h1 class="heading">Handcrafted masterpieces brough to you by your local artisians</h1>
+		<div class="small_grid">
+			<div class="g_1_1 g">Affordable gifts for family and friends</div>
+			<div class="g_1_2 g">Authenticity Guarantee</div>
+			<div class="g_2_1 g">Different style for different taste</div>
+			<div class="g_2_2 g">Custom Designs curated from all over the country</div>
 		</div>
-	</div> <!-- col.// -->
-	{% endfor %}
-</div> <!-- row.// -->
+		<div class="btns">
+			<button class="b1">Learn More</button>
+			<button class="b2">Artist's Page</button>
+		</div>
+	</div>
+	<div class="right_grid">
+		<h1>Your local artisians</h1>
+		<div class="art_img">
+			<img class="artisian_img" src="{% static 'images/artisian3.png' %}" alt="">
+			<img class="artisian_img" src="{% static 'images/artisian2.png' %}" alt="">
+			<img class="artisian_img" src="{% static 'images/artisian3.png' %}" alt="">
+		</div>
+		<div class="project">
+			<div>
+				<span class="p_div">300+</span><span class="t_div">Projects</span>
+			</div>
+			<div>
+				<span class="p_div">25+</span><span class="t_div">Artisians</span>
+			</div>
+			<div>
+				<span class="p_div">10+</span><span class="t_div">Art Styles</span>
+			</div>
+		</div>
 
-</div><!-- container // -->
+	</div>
+</div>
+
+<!------------------------------ All that we offer  ------------------------------->
+
+<section class="atwo">
+	<h1 class="atwo_heading">All that we offer!!</h1>
+	<div class="slide" id="padding_box">
+		<div class="row" id="rows">
+			{% for category in categories %}
+
+			<div class="col column">
+				<a href="{{category.get_url}}"><img class="img img_1" src="{{category.cat_image.url}}" alt=""></a>
+				<div class="bg_circle"></div>
+				<div class="txt">{{category.category_name}}</div>
+
+			</div>
+			
+			{% endfor %}
+		</div>
+	</div>
+	</div>
 </section>
-<!-- ========================= SECTION  END// ========================= -->
+<!-------------------------- Best sellers ---------------------------->
+
+<section id="best_seller">
+	<h1 class="bs_heading">BEST SELLERS</h1>
+	<div id="bs_padding_box">
+		<div class="row" id="bs_rows">
+			{% for product in products %}
+			<div class="col">
+				<a href="{{ product.get_url }}">
+					<div class="img_outerdiv_bs" id="bs_column" style="background-image:url({{product.images.url}});">
+				</a>
+				<div class="img_div_bs">
+					<div class="prodct_n">{{product.product_name}}</div>
+					<div class="cost_ar_nm">
+						<div class="cost">{{ product.price }}/-</div>
+						<div class="artst_nm">{{product.artist}}</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		{% endfor %}
 
 
+	</div>
 
+	</div>
+</section>
+<!---------------secound section------------------->
 
+<section>
+	<div class="product_grid">
+		<!-- 4col/ 2row -->
+		<div class="row">
+			{% for product in products %}
 
-
-</body>
-</html>
+			<div class="col col_css">
+				<a href="{{ product.get_url }}"><img class="atwo_img1" src="{{ product.images.url }}" alt=""></a>
+				<div class="atwo_an">artist name</div>
+				<div class="atwo_pn">{{ product.product_name }}</div>
+				<div class="atwo_p1">{{ product.price }}/-</div>
+			</div>
+			{% endfor %}
+		</div>
+		<div class="p_link_btn_div"><a href="{% url 'store' %}"><button class="p_link_btn">Show More</button></a></div>
+</section>
 
 {% endblock %}

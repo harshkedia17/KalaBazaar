@@ -1,3 +1,4 @@
+from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect
 
 from cart.models import Cart_Item
@@ -16,17 +17,19 @@ def store(request, category_slug=None):
     products = None
 
     if category_slug != None:
-        categories = get_object_or_404(Category, slug=category_slug)
+        categories = get_object_or_404(Category,slug=category_slug)
+        print(categories)
         products = Product.objects.filter(category=categories, is_available=True)
+        paginator = Paginator(products, 4)
+        page = request.GET.get('page')
+        paged_products = paginator.get_page(page)
+        print(1)
+    else:
         products = Product.objects.all().filter(is_available=True)
         paginator = Paginator(products, 4)
         page = request.GET.get('page')
         paged_products = paginator.get_page(page)
-    else:
-        products = Product.objects.all().filter(is_available=True)
-        paginator = Paginator(products, 8)
-        page = request.GET.get('page')
-        paged_products = paginator.get_page(page)
+        print(2)
     context = {
         'products': paged_products
     }
@@ -69,17 +72,21 @@ def submit_review(request, product_id):
             form = ReviewForm(request.POST, instance=reviews)
             form.save()
             messages.success(request, 'Thank you! Your review has been updated.')
+            print(1)
             return redirect(url)
+    
         except ReviewRating.DoesNotExist:
             form = ReviewForm(request.POST)
             if form.is_valid():
                 data = ReviewRating()
                 data.subject = form.cleaned_data['subject']
-                # data.rating = form.cleaned_data['rating']
+                data.rating = form.cleaned_data['rating']
                 data.review = form.cleaned_data['review']
                 data.ip = request.META.get('REMOTE_ADDR')
                 data.product_id = product_id
                 data.user_id = request.user.id
                 data.save()
                 messages.success(request, 'Thank you! Your review has been submitted.')
+                print(2)
                 return redirect(url)
+ 

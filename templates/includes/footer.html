@@ -1,21 +1,24 @@
-<!-- ========================= FOOTER ========================= -->
-<footer class="section-footer border-top">
-	<div class="container">
-		<section class="footer-bottom border-top row">
-			<div class="col-md-2">
-				<p class="text-muted">KalaBazzar </p>
+{% load static %}
+<section class="index_footer">
+	<div class="footer">
+		<div class="row" id="footer">
+			<div class="col logo_contact"><img src="{% static 'images/logo.svg' %}" alt=""></div>
+			<div class="col col_2">
+				<div class="contact_txt">Contact Us...</div>
+				<div><a class="contact_num contact_link" href="">Phone: 1234567892</a></div>
+				<div><a class="contact_mail contact_link" href="">Email: gargto31@gmail.com</a></div>
+				<div>
+					<img class="icon" src="{% static 'images/rec.png' %}" alt="">
+					<img class="icon" src="{% static 'images/rec.png' %}" alt="">
+					<img class="icon" src="{% static 'images/rec.png' %}" alt="">
+					<img class="icon" src="{% static 'images/rec.png' %}" alt="">
+				</div>
 			</div>
-			<div class="col-md-8 text-md-center">
-				<span  class="px-2">info@harsh</span>
-				<span  class="px-2">879-332-9375</span>
-				<span  class="px-2">Delhi</span>
+			<div class="col col_3">
+				<div class="contact_txt">The Comapany</div>
+				<div class="cat">Categories</div>
+				<div class="get">Get in Touch</div>
 			</div>
-			<div class="col-md-2 text-md-right text-muted">
-				<i class="fab fa-lg fa-cc-visa"></i>
-				<i class="fab fa-lg fa-cc-paypal"></i>
-				<i class="fab fa-lg fa-cc-mastercard"></i>
-			</div>
-		</section>
-	</div><!-- //container -->
-</footer>
-<!-- ========================= FOOTER END // ========================= -->
+		</div>
+	</div>
+</section>

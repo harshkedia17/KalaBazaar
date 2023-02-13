@@ -3,61 +3,38 @@
 
 {% block content %}
 
-<section class="section-content padding-y">
-
-    <!-- ============================ COMPONENT REGISTER   ================================= -->
-    <div class="card mx-auto" style="max-width:520px; margin-top:40px;">
-        <article class="card-body">
-            {% include 'includes/alerts.html' %}
-            <header class="mb-4"><h4 class="card-title">Sign up</h4></header>
-            <form action="{% url 'register' %}" method="POST">
-                {% csrf_token %}
-
-                <div class="form-row">
-                    <div class="col form-group">
-                        <label>First name</label>
-                        {{ form.first_name }}
-                    </div> <!-- form-group end.// -->
-                    <div class="col form-group">
-                        <label>Last name</label>
-                        {{ form.last_name }}
-                    </div> <!-- form-group end.// -->
-                </div> <!-- form-row end.// -->
-
-
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label>Email Address</label>
-                        {{ form.email }}
-                    </div> <!-- form-group end.// -->
-                    <div class="form-group col-md-6">
-                        <label>Phone Number</label>
-                        {{form.phone_number}}
-                    </div> <!-- form-group end.// -->
-                </div> <!-- form-row.// -->
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label>Create password</label>
-                        {{form.password}}
-                    </div> <!-- form-group end.// -->
-                    <div class="form-group col-md-6">
-                        <label>Repeat password</label>
-                        {{form.confirm_password}}
-                    </div> <!-- form-group end.// -->
+<img class="pattern" src="{% static 'images/5a2a05f7dfc143.2888431815127034799165.png' %}" alt="">
+    <section id="sign_up_heading">
+        <h1 class="sign_up_heading">SIGN UP!</h1>
+        <form action="{% url 'register' %}" method="POST">
+            {% csrf_token %}
+            <div class="row row1">
+                <div class="col">
+                    First Name: {{ form.first_name }}
                 </div>
-                <div class="form-group">
-                    <button type="submit" class="btn btn-primary btn-block"> Register</button>
-                </div> <!-- form-group// -->
-                {{form.email.errors}}
-                {{form.non_field_errors}}
-            </form>
-        </article><!-- card-body.// -->
-    </div> <!-- card .// -->
-    <p class="text-center mt-4">Have an account? <a href="{% url 'login' %}">Log In</a></p>
-    <br><br>
-    <!-- ============================ COMPONENT REGISTER  END.// ================================= -->
+                <div class="col">
+                    Last Name: {{ form.last_name }}
+                </div>
+            </div>
+            <div class="row row2">
+                <div class="col">
+                    Email: {{ form.email }}
+                </div>
+                <div class="col">
+                    Phone No.: {{form.phone_number}}
+                </div>
+            </div>
 
-
+            <div class="row row4">
+                <div class="col">Password: {{form.password}}
+                <div class="col" style="margin-top: 20px;">Confirm Password: {{form.confirm_password}}
+            </div>
+            <button class="signupbutton" style="margin: 20px 0px;">Sign Up</button>
+            {{form.email.errors}}
+            {{form.non_field_errors}}
+        </form>
+        <div type="submit" class="option">Already Have an account? <a href="{% url 'login' %}" style="text-align: center;">Login</a></div>
+    </section>
 </section>
 
 
